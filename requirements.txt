@@ -1,0 +1,4 @@
+Mastodon.py
+python-dotenv
+transformers
+torch         # Needed for many Hugging Face models
