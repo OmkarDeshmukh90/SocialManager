@@ -1,0 +1,24 @@
+name: Scheduled Mastodon Bot Execution
+
+on:
+  schedule:
+    - cron: "0 */2 * * *"  # Runs at minute 0 every 2 hours
+  workflow_dispatch:  # Allows you to trigger the workflow manually
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+          
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Mastodon Bot Script
+        run: python -m src.mastodon_bot
